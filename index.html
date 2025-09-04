@@ -7,27 +7,20 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="container">
-    <h2>Centering Calculator</h2>
+  <h2>Centering Calculator</h2>
 
-    <div class="input-row">
-      <label for="edgeA">Edge A</label>
-      <input type="number" id="edgeA" placeholder="Enter value">
-      <span id="edgeAResult">0%</span>
-    </div>
+  <label for="edgeA">Edge A</label>
+  <input type="number" id="edgeA" placeholder="Enter value">
 
-    <div class="input-row">
-      <label for="edgeB">Edge B</label>
-      <input type="number" id="edgeB" placeholder="Enter value">
-      <span id="edgeBResult">0%</span>
-    </div>
+  <label for="edgeB">Edge B</label>
+  <input type="number" id="edgeB" placeholder="Enter value">
 
-    <button class="reset" onclick="resetValues()">Reset</button>
+  <button onclick="resetValues()">Reset</button>
 
-    <p class="grade">Centering Grade: <span id="centeringGrade">-</span></p>
-  </div>
+  <p>Edge A %: <span id="edgeAResult">0%</span></p>
+  <p>Edge B %: <span id="edgeBResult">0%</span></p>
+  <h3>Centering Grade: <span id="centeringGrade">-</span></h3>
 
-  <!-- Link to external JS -->
   <script src="index.js"></script>
 </body>
 </html>
