@@ -1,48 +1,125 @@
+/* General Reset */
 body {
-  background-color: black;
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Poppins', sans-serif;
+  background: #000000;
   color: white;
-  font-family: Arial, Helvetica, sans-serif;
-  text-align: center;
-  padding: 20px;
 }
 
-h2 {
-  margin-bottom: 20px;
-  font-size: 1.8rem;
+/* Container */
+.container {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  max-width: 400px;
+  width: 90%;
+}
+
+/* Heading */
+.container h2 {
+  color: white;
+  font-weight: 600;
+  font-size: 1.4rem;
+  margin-bottom: 15px;
+}
+
+/* Input Row */
+.input-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  margin: 12px 0;
+  gap: 10px;
 }
 
 label {
-  display: block;
-  margin-top: 15px;
-  font-size: 1.2rem;
-}
-
-input {
-  width: 200px;
-  padding: 10px;
-  margin: 5px 0;
-  border: none;
-  border-radius: 8px;
-  font-size: 1.1rem;
-  text-align: center;
-}
-
-button {
-  margin-top: 20px;
-  padding: 10px 20px;
   font-size: 1rem;
+  flex: 1;
+  text-align: left;
+}
+
+/* Inputs */
+input[type="number"] {
+  text-align: center;
+  width: 200px;        /* wider for readability */
+  padding: 10px;       /* more padding inside */
   border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  background-color: #555;
-  color: white;
+  border-radius: 12px; /* bigger rounded corners */
+  font-size: 1.2rem;   /* larger text for ease of use */
+  background: #f0f0f5;
 }
 
-button:hover {
-  background-color: #777;
+/* Percent Result */
+span {
+  font-size: 1.2rem;   /* match input readability */
+  font-weight: 600;
+  flex: 1;
+  text-align: right;
 }
 
-h3 {
+/* Button */
+.reset {
   margin-top: 20px;
-  font-size: 1.5rem;
+  padding: 12px 30px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 10px;
+  background-color: #5a5e68;
+  color: white;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.reset:hover {
+  background-color: #767b88;
+}
+
+/* Grade */
+.grade {
+  margin-top: 30px;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+#centeringGrade {
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-left: 10px;
+  transition: all 0.3s ease;
+}
+
+/* Responsive */
+@media (max-width: 500px) {
+  .container {
+    padding: 15px;
+  }
+
+  .input-row {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  label {
+    margin-bottom: 5px;
+  }
+
+  span {
+    align-self: flex-end;
+  }
+
+  input[type="number"] {
+    width: 100%;        /* full width on small screens */
+  }
+
+  .reset {
+    width: 100%;
+  }
 }

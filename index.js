@@ -4,12 +4,12 @@ const edgeAResult = document.getElementById('edgeAResult');
 const edgeBResult = document.getElementById('edgeBResult');
 const centeringGrade = document.getElementById('centeringGrade');
 
-// ✅ Autofocus Edge A when page loads
+// Autofocus Edge A when page loads
 window.onload = () => {
   edgeAInput.focus();
 };
 
-// ✅ Allow Enter key in Edge A to go to Edge B
+// Enter in Edge A moves to Edge B
 edgeAInput.addEventListener('keydown', (e) => {
   if (e.key === "Enter") {
     e.preventDefault();
@@ -17,7 +17,7 @@ edgeAInput.addEventListener('keydown', (e) => {
   }
 });
 
-// ✅ Allow Enter key in Edge B to calculate immediately
+// Enter in Edge B calculates
 edgeBInput.addEventListener('keydown', (e) => {
   if (e.key === "Enter") {
     e.preventDefault();
@@ -31,7 +31,6 @@ function calculate() {
   let total = a + b;
 
   if (total > 0) {
-    // Supporting formulas
     let aPercent = ((a / total) * 100).toFixed(1);
     let bPercent = ((b / total) * 100).toFixed(1);
 
