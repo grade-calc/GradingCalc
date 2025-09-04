@@ -17,61 +17,64 @@ body {
   flex-direction: column;
   align-items: center;
   padding: 20px;
-  max-width: 400px;
-  width: 90%;
+  max-width: 420px;
+  width: 100%;
 }
 
 /* Heading */
 .container h2 {
   color: white;
   font-weight: 600;
-  font-size: 1.4rem;
-  margin-bottom: 15px;
+  font-size: 1.6rem;
+  margin-bottom: 20px;
 }
 
 /* Input Row */
 .input-row {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center; /* keep all content centered */
   width: 100%;
-  margin: 12px 0;
-  gap: 10px;
+  margin: 15px 0;
+  gap: 12px;
 }
 
+/* Labels */
 label {
-  font-size: 1rem;
-  flex: 1;
-  text-align: left;
+  font-size: 1.1rem;
+  font-weight: 500;
+  min-width: 70px; /* keeps alignment consistent */
+  text-align: right;
 }
 
 /* Inputs */
 input[type="number"] {
   text-align: center;
-  width: 200px;        /* wider for readability */
-  padding: 10px;       /* more padding inside */
+  width: 220px;        /* fixed width for consistency */
+  padding: 14px;
   border: none;
-  border-radius: 12px; /* bigger rounded corners */
-  font-size: 1.2rem;   /* larger text for ease of use */
+  border-radius: 12px;
+  font-size: 1.2rem;
+  font-weight: 600;
   background: #f0f0f5;
 }
 
 /* Percent Result */
 span {
-  font-size: 1.2rem;   /* match input readability */
+  font-size: 1.2rem;
   font-weight: 600;
-  flex: 1;
-  text-align: right;
+  min-width: 60px;     /* keeps result aligned */
+  text-align: left;
 }
 
 /* Button */
 .reset {
-  margin-top: 20px;
-  padding: 12px 30px;
-  font-size: 1.1rem;
+  margin-top: 25px;
+  padding: 14px 35px;
+  font-size: 1.2rem;
   font-weight: 600;
   border: none;
-  border-radius: 10px;
+  border-radius: 12px;
   background-color: #5a5e68;
   color: white;
   cursor: pointer;
@@ -84,15 +87,15 @@ span {
 
 /* Grade */
 .grade {
-  margin-top: 30px;
-  font-size: 1.2rem;
+  margin-top: 35px;
+  font-size: 1.3rem;
   font-weight: 600;
 }
 
 #centeringGrade {
-  font-size: 1.8rem;
+  font-size: 2rem;
   font-weight: 700;
-  margin-left: 10px;
+  margin-left: 8px;
   transition: all 0.3s ease;
 }
 
@@ -104,19 +107,22 @@ span {
 
   .input-row {
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
+    gap: 8px;
   }
 
   label {
-    margin-bottom: 5px;
-  }
-
-  span {
-    align-self: flex-end;
+    text-align: center;
+    min-width: unset;
   }
 
   input[type="number"] {
-    width: 100%;        /* full width on small screens */
+    width: 100%; /* full width on mobile */
+  }
+
+  span {
+    align-self: center;
+    text-align: center;
   }
 
   .reset {
