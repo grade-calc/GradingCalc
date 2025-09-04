@@ -4,26 +4,50 @@ const edgeAResult = document.getElementById('edgeAResult');
 const edgeBResult = document.getElementById('edgeBResult');
 const centeringGrade = document.getElementById('centeringGrade');
 
+// ✅ Autofocus Edge A when page loads
+window.onload = () => {
+  edgeAInput.focus();
+};
+
+// ✅ Allow Enter key in Edge A to go to Edge B
+edgeAInput.addEventListener('keydown', (e) => {
+  if (e.key === "Enter") {
+    e.preventDefault();
+    edgeBInput.focus();
+  }
+});
+
+// ✅ Allow Enter key in Edge B to calculate immediately
+edgeBInput.addEventListener('keydown', (e) => {
+  if (e.key === "Enter") {
+    e.preventDefault();
+    calculate();
+  }
+});
+
 function calculate() {
   let a = parseFloat(edgeAInput.value) || 0;
   let b = parseFloat(edgeBInput.value) || 0;
   let total = a + b;
 
   if (total > 0) {
-    // Supporting formulas: Edge A % and Edge B %
+    // Supporting formulas
     let aPercent = ((a / total) * 100).toFixed(1);
     let bPercent = ((b / total) * 100).toFixed(1);
 
     edgeAResult.textContent = aPercent + '%';
     edgeBResult.textContent = bPercent + '%';
 
-    // Main formula: use max(A,B), round UP (ceiling)
+    // Main formula (round UP)
     let l = Math.ceil((Math.max(a, b) / total) * 100);
 
     centeringGrade.textContent = getGrade(l);
     applyGradeColor(centeringGrade.textContent);
   } else {
-    resetValues();
+    edgeAResult.textContent = "0%";
+    edgeBResult.textContent = "0%";
+    centeringGrade.textContent = "-";
+    centeringGrade.style.color = "white";
   }
 }
 
@@ -60,7 +84,9 @@ function resetValues() {
   edgeBResult.textContent = "0%";
   centeringGrade.textContent = "-";
   centeringGrade.style.color = "white";
+  edgeAInput.focus();
 }
 
+// Live calculation
 edgeAInput.addEventListener('input', calculate);
 edgeBInput.addEventListener('input', calculate);
