@@ -3,6 +3,7 @@ const edgeBInput = document.getElementById('edgeB');
 const edgeAResult = document.getElementById('edgeAResult');
 const edgeBResult = document.getElementById('edgeBResult');
 const centeringGrade = document.getElementById('centeringGrade');
+const resetBtn = document.querySelector('.reset');
 
 // Autofocus Edge A when page loads
 window.onload = () => {
@@ -17,11 +18,21 @@ edgeAInput.addEventListener('keydown', (e) => {
   }
 });
 
-// Enter in Edge B calculates
+// Enter in Edge B moves to Reset button
 edgeBInput.addEventListener('keydown', (e) => {
   if (e.key === "Enter") {
     e.preventDefault();
     calculate();
+    resetBtn.focus();
+  }
+});
+
+// Enter on Reset triggers reset + go back to Edge A
+resetBtn.addEventListener('keydown', (e) => {
+  if (e.key === "Enter") {
+    e.preventDefault();
+    resetValues();
+    edgeAInput.focus();
   }
 });
 
