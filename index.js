@@ -2,8 +2,9 @@ const edgeAInput = document.getElementById('edgeA');
 const edgeBInput = document.getElementById('edgeB');
 const edgeAResult = document.getElementById('edgeAResult');
 const edgeBResult = document.getElementById('edgeBResult');
+const centeringPercent = document.getElementById('centeringPercent');
 const centeringGrade = document.getElementById('centeringGrade');
-const resetButton = document.querySelector('.reset');
+const resetBtn = document.getElementById('resetBtn');
 
 function calculate() {
   let a = parseFloat(edgeAInput.value) || 0;
@@ -17,33 +18,35 @@ function calculate() {
     edgeAResult.textContent = aPercent + '%';
     edgeBResult.textContent = bPercent + '%';
 
-    // Main formula: l = (max(A,B) / (A+B)) * 100
+    // Main formula: l = (max(A, B) / (A + B)) × 100
     let l = ((Math.max(a, b) / total) * 100).toFixed(1);
 
+    centeringPercent.textContent = l + "%";
     centeringGrade.textContent = getGrade(l);
     applyGradeColor(centeringGrade.textContent);
   } else {
     edgeAResult.textContent = "0%";
     edgeBResult.textContent = "0%";
+    centeringPercent.textContent = "-";
     centeringGrade.textContent = "-";
     centeringGrade.style.color = "white";
   }
 }
 
-// Grading Scale
 function getGrade(l) {
   let p = parseFloat(l);
+
   if (p >= 50 && p <= 55) return "10";
-  if (p >= 56 && p <= 60) return "9";
-  if (p >= 61 && p <= 65) return "8";
-  if (p >= 66 && p <= 70) return "7";
-  if (p >= 71 && p <= 80) return "6";
-  if (p >= 81 && p <= 85) return "5";
+  if (p > 55 && p <= 60) return "9";
+  if (p > 60 && p <= 65) return "8";
+  if (p > 65 && p <= 70) return "7";
+  if (p > 70 && p <= 80) return "6";
+  if (p > 80 && p <= 85) return "5";
   if (p > 85) return "4";
+
   return "-";
 }
 
-// Color coding by grade
 function applyGradeColor(grade) {
   switch (grade) {
     case "10": centeringGrade.style.color = "#4CAF50"; break; // green
@@ -52,7 +55,7 @@ function applyGradeColor(grade) {
     case "7": centeringGrade.style.color = "#FFC107"; break;
     case "6": centeringGrade.style.color = "#FF9800"; break;
     case "5": centeringGrade.style.color = "#FF5722"; break;
-    case "4": centeringGrade.style.color = "#F44336"; break; // red
+    case "4": centeringGrade.style.color = "#F44336"; break;
     default: centeringGrade.style.color = "white";
   }
 }
@@ -62,38 +65,38 @@ function resetValues() {
   edgeBInput.value = "";
   edgeAResult.textContent = "0%";
   edgeBResult.textContent = "0%";
+  centeringPercent.textContent = "-";
   centeringGrade.textContent = "-";
   centeringGrade.style.color = "white";
   edgeAInput.focus();
 }
 
-// Auto focus Edge A when page loads
-window.onload = () => {
-  edgeAInput.focus();
-};
+edgeAInput.addEventListener('input', calculate);
+edgeBInput.addEventListener('input', calculate);
 
-// Enter key navigation + reset
-edgeAInput.addEventListener('keydown', (e) => {
+resetBtn.addEventListener('click', resetValues);
+
+// Enter key navigation
+edgeAInput.addEventListener("keydown", e => {
   if (e.key === "Enter") {
     e.preventDefault();
     edgeBInput.focus();
   }
 });
 
-edgeBInput.addEventListener('keydown', (e) => {
+edgeBInput.addEventListener("keydown", e => {
   if (e.key === "Enter") {
     e.preventDefault();
-    resetButton.focus();
+    resetBtn.focus();
   }
 });
 
-resetButton.addEventListener('keydown', (e) => {
+resetBtn.addEventListener("keydown", e => {
   if (e.key === "Enter") {
     e.preventDefault();
     resetValues();
   }
 });
 
-edgeAInput.addEventListener('input', calculate);
-edgeBInput.addEventListener('input', calculate);
-resetButton.addEventListener('click', resetValues);
+// Focus Edge A on page load
+window.onload = () => edgeAInput.focus();
